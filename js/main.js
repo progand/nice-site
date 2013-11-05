@@ -40,11 +40,11 @@ require([
     'routers/approuter'
 ], function(AppView, AppRouter) {
     // Initialize routing and start Backbone.history()
-    new AppRouter();
+    var router = new AppRouter();
 
     // Initialize the application view
     var view = new AppView();
-    $('#app-canvas').append(view.el);
+    $('#app-canvas').append(view.el);    
 
     Backbone.history.start();
 
