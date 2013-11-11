@@ -22,18 +22,9 @@ define(function(require) {
         // Setup app view
         initialize: function() {            
             this.render();
-        },
-        changeTo: function(page) {
-            switch(page){
-                case '':
-                    var pageTemplate = Handlebars.compile(indexTemplate);
-                    this.pageContent = pageTemplate({});
-                break;
-            }
-            this.render();
-        },
+        },       
         onRouteChanged: function(route, params){
-            this.changeTo(route);
+            
         }
         
 
