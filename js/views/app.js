@@ -1,13 +1,14 @@
-define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'thorax',
-    'collections/collection',
-    'text!templates/app.handlebars',
-    'common',
-    'text!templates/page/index.handlebars'
-], function($, _, Backbone, Thorax, Collection, appTemplate, Common, indexTemplate) {
+define(function(require) {
+   
+    var $ = require('jquery');
+    var _ = require('underscore');
+    var Backbone = require('backbone');
+    var Thorax = require('thorax');
+    var Collection = require('collections/collection');
+    var appTemplate = require('text!templates/app.handlebars');
+    var Common = require('common');
+    var indexTemplate = require('text!templates/page/index.handlebars');
+
    
     return Thorax.View.extend({
         // In a require.js application the name is primarily for
@@ -24,11 +25,17 @@ define([
         },
         changeTo: function(page) {
             switch(page){
-                case 'index':
+                case '':
                     var pageTemplate = Handlebars.compile(indexTemplate);
                     this.pageContent = pageTemplate({});
+                break;
             }
+            this.render();
+        },
+        onRouteChanged: function(route, params){
+            this.changeTo(route);
         }
+        
 
     });
 

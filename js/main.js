@@ -35,17 +35,19 @@ require.config({
     }
 });
 
-require([
-    'views/app',
-    'routers/approuter'
-], function(AppView, AppRouter) {
+define(function(require) {    
+    var AppView = require('views/app');
+    var AppRouter = require('routers/approuter');
+    
     // Initialize routing and start Backbone.history()
     var router = new AppRouter();
 
     // Initialize the application view
-    var view = new AppView();
-    $('#app-canvas').append(view.el);    
-
+    var app = new AppView();
+    $('#app-canvas').append(app.el);  
+    
+    app.listenTo(router, 'route', app.onRouteChanged);
+    
     Backbone.history.start();
 
 });
