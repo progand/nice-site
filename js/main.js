@@ -44,6 +44,7 @@ define(function(require) {
 
     // Initialize the application view
     var app = new AppView();
+    app.render();
     $('#app-canvas').append(app.el);  
     
     app.listenTo(router, 'route', app.onRouteChanged);
