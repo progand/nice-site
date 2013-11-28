@@ -14,13 +14,14 @@ define(function(require) {
         // consistency and debugging purposes
         name: 'app',
         pageContent: "",
-        template: Handlebars.compile(appTemplate),
         page: new Page(),
+        //template: Handlebars.compile(appTemplate),        
         // Delegated events
         events: {
         },
         // Setup app view
-        initialize: function() {            
+        initialize: function() {   
+            this.template = Handlebars.compile(appTemplate);
         },
         onRouteChanged: function(route, params) {
 
